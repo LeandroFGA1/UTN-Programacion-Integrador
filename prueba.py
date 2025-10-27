@@ -68,11 +68,36 @@ def filtrar_paises(filtro:str):
     filtro = filtro.strip().lower()
     if filtro == "1": #continentes
         print("")
-    elif filtro == "2": #rango de poblacion
+    elif filtro == "2": #rango de poblacion a-b incluidos
         print("")
-    elif filtro == "3": #rango de superficie
+    elif filtro == "3": #rango de superficie a-b incluidos
         print("")
+    else:
+        print("invalido")
 
+def ordenar_paises(ordenar:str):
+    ordenar = ordenar.strip().lower()
+    if ordenar =="1": #nombre A-Z o Z-A
+        print()
+    elif ordenar =="2": #poblacion -> de mayor a menor o de menor a mayor
+        print()
+    elif ordenar =="3": #superficie -> de mayor a menor o de menor a mayor
+        print()
+    else:
+        print("invalido")
+
+def mostrar_estadistica(mostrar:str):
+    mostrar = mostrar.strip.lower()
+    if mostrar =="1": # el pais con mayor poblacion y el menor
+        print()
+    elif mostrar =="2": # promedio de poblacion -- no entendi
+        print()
+    elif mostrar =="3": # promedio de superficie -- no entendi
+        print()
+    elif mostrar =="4": #cantidad de paises por continente
+        print()
+    else:
+        print("invalido")
 
 
 def main():                        
