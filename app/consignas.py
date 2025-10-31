@@ -82,25 +82,38 @@ def ordenar_paises_por_nombre(criterio: str):
 
 def ordenar_paises_por_numero(criterio: str, clave: str):
     lista_datos = duplicado_csv()
-    masmenos = criterio.split("_")
-    if criterio in [f"{clave}_menos"]:
+
+    # Verificar el criterio
+    if criterio == f"{clave}_menos":
         ascendente = True
-    elif criterio in [f"{clave}_mas"]:
+    elif criterio == f"{clave}_mas":
         ascendente = False
     else:
         return {"error": "criterio invalido"}
     for for_externo in range(len(lista_datos)):
         for for_interno in range(for_externo + 1, len(lista_datos)):
-            a = int(lista_datos[for_externo][clave])
-            b = int(lista_datos[for_interno][clave])
+            a_str = str(lista_datos[for_externo][clave]).strip().replace(",", ".")
+            b_str = str(lista_datos[for_interno][clave]).strip().replace(",", ".")
+
+            # Si tienen punto, tomar solo la parte entera
+            if "." in a_str:
+                a_str = a_str.split(".")[0]
+            if "." in b_str:
+                b_str = b_str.split(".")[0]
+
+            # Validar que sean numéricos
+            if not a_str.isdigit() or not b_str.isdigit():
+                continue
+            a = int(a_str)
+            b = int(b_str)
 
             if ascendente and a > b:
                 lista_datos[for_externo], lista_datos[for_interno] = lista_datos[for_interno], lista_datos[for_externo]
             elif not ascendente and a < b:
                 lista_datos[for_externo], lista_datos[for_interno] = lista_datos[for_interno], lista_datos[for_externo]
-
     actualizar_csv(lista_datos)
     return lista_datos
+
 
 def ordenar_paises(criterio: str):
     if criterio in ["nombre_az", "nombre_za"]:
