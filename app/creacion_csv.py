@@ -51,7 +51,7 @@ def crear_csv():
                 superficie = int(superficie)
             continente = traduccion_continente(str(pais["region"]).title())
             independencia = bool(pais["independent"])
-            if continente !="Antarctic":
+            if continente !="Antarctic": # no hay paises antarticos, hay paises en la antartida que no es lo mismo. ademas por tratados internacionales ningun pais tiene territorio tal cual en la antartida, supervisan. por eso no se agrega
                 lector.append({
                     "nombre":       nombre,
                     "poblacion":    poblacion,

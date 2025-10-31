@@ -5,6 +5,8 @@ from generador_html import generar_html_salidas
 from consignas import buscar_pais,filtrar_continentes,filtrar_rango,ordenar_paises,min_max_poblacion,promedio_poblacion,promedio_superficie,paises_por_continente
 import csv
 import os
+
+#inicializacion de las carpetas
 app = Flask(
     __name__,
     static_folder="static",
@@ -13,6 +15,7 @@ app = Flask(
 
 crear_csv()
 
+#lo primero que hace el programa al ejecutarse es cargar la lista de paises inicial
 @app.route('/')
 def home():
     paises = duplicado_csv()
@@ -20,6 +23,7 @@ def home():
     html_salida = generar_html_salidas(paises)
     return render_template('index.html',html_salida=html_salida, cantidad_paises = contador_paises)
 
+#buscar pais
 @app.route('/buscar')
 def buscar():
     nombre = request.args.get('pais', '')
@@ -27,6 +31,7 @@ def buscar():
     html_salida = generar_html_salidas(resultado)
     return render_template('index.html', html_salida=html_salida)
 
+#filtrar por continente
 @app.route('/filtrar_continente')
 def filtrar_continente():
     continente = request.args.get('continente', '')
@@ -35,19 +40,19 @@ def filtrar_continente():
     html_salida = generar_html_salidas(resultado)
     return render_template('index.html', html_salida=html_salida, cantidad_paises=contador_paises)
 
-
+#filtrar por poblacion
 @app.route('/filtrar_poblacion')
 def filtrar_poblacion_ruta():
     minimo = int(request.args.get('min', 0))
     maximo = int(request.args.get('max', 0))
-    if minimo < 0 or maximo < 0:
+    if minimo < 0 or maximo < 0: # un fix que se soluciono modificando el html
         return {"error":"no puede haber numeros negativos"}
     resultado = filtrar_rango(minimo, maximo, "poblacion")
     contador_paises = paises_actuales(resultado)
     html_salida = generar_html_salidas(resultado)
     return render_template('index.html', html_salida=html_salida, cantidad_paises=contador_paises)
 
-
+# filtrar por superficie 
 @app.route('/filtrar_superficie')
 def filtrar_superficie_ruta():
     minimo = int(request.args.get('min', 0))
@@ -57,6 +62,7 @@ def filtrar_superficie_ruta():
     html_salida = generar_html_salidas(resultado)
     return render_template('index.html', html_salida=html_salida, cantidad_paises=contador_paises)
 
+#ordenar el csv
 @app.route('/ordenar')
 def ordenar():
     criterio = request.args.get('criterio', '')
@@ -65,6 +71,7 @@ def ordenar():
     html_salida = generar_html_salidas(resultado)
     return render_template('index.html', html_salida=html_salida, cantidad_paises=contador_paises)
 
+#borra y crea un nuev csv desde 0, desaciendo cualquier cambio
 @app.route("/borrar")
 def borrar():
     if os.path.exists(CSV):
@@ -75,33 +82,28 @@ def borrar():
     html_salida = generar_html_salidas(paises)
     return render_template('index.html',html_salida=html_salida,cantidad_paises=contador_paises)
 
+#muestra las distintas estadisticas 
 @app.route("/estadisticas")
 def estadisticas():
     tipo = request.args.get("tipo")
-
     if not tipo:
         html_salida = generar_html_salidas({"error": "Tipo no especificado"})
         return render_template("index.html", html_salida=html_salida)
-
     if tipo == "maxmin_poblacion":
         resultado = min_max_poblacion()
         contador_paises = paises_actuales(resultado)
         html_salida = generar_html_salidas(resultado)
         return render_template("index.html", html_salida=html_salida, cantidad_paises=contador_paises)
-
     elif tipo == "prom_poblacion":
         resultado = promedio_poblacion()
         contador_paises = paises_actuales(resultado)
         html_salida = generar_html_salidas(resultado)
         return render_template("index.html", html_salida=html_salida, cantidad_paises=contador_paises)
-
     elif tipo == "prom_superficie":
         resultado = promedio_superficie()
         contador_paises = paises_actuales(resultado)
         html_salida = generar_html_salidas(resultado)
         return render_template("index.html", html_salida=html_salida, cantidad_paises=contador_paises)
-
-
     elif tipo == "paises_continente":
         resultado = paises_por_continente()
         contador_paises = paises_actuales(resultado)
@@ -115,4 +117,4 @@ def estadisticas():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)

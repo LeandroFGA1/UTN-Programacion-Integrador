@@ -3,7 +3,8 @@ from creacion_csv import crear_csv,BASE_DIRECTORIO,CSV,PARAMETROS
 from auxiliares import normalizar_nombre,duplicado_csv,actualizar_csv
 import csv
 
-
+#busca un pais exactamente, en el proceso va haciendo una lista de los paises aproximados
+#si no encuntra el pais, da la lista aproximada, si no hay aproxiamados, devuelve error
 def buscar_pais(nombre:str):
     if not nombre.strip().replace(" ","").replace(",","").isalpha():
         return {"error":"entrada invalida"}
@@ -24,6 +25,8 @@ def buscar_pais(nombre:str):
         else:
             return paises_parcial
 
+#se hace una lista con los paises que coincidan con dicho continente
+#si no existe el continente en el resgistro actual, tira un error
 def filtrar_continentes(continente:str):
     lista = duplicado_csv()
     lista_filtrada=[]
@@ -36,11 +39,11 @@ def filtrar_continentes(continente:str):
         actualizar_csv(lista_filtrada)
         return lista_filtrada
 
-
+#recibe unos parametros, si el pais esta dentro de ellos se registra en la nueva lista
+#hay algunos paises con superficie float, asi que se añadio una destructuracion para poder identificarlos y tomarlos con su parte entera
 def filtrar_rango(minimo: int, maximo: int, tipo: str):
     if minimo >= maximo:
         return {"error": "entrada invalida, el mínimo debe ser menor al máximo"}
-
     lista = duplicado_csv()
     lista_filtrada = []
 
@@ -61,7 +64,9 @@ def filtrar_rango(minimo: int, maximo: int, tipo: str):
     return lista_filtrada
 
 
-
+#segun el tipo de criterio, aplica el reverse.
+#extrae los nombres de los paises, los ordena
+#luego recorre los paises de nuevo y los va introduciendo a una nueva lista ya en un orden
 def ordenar_paises_por_nombre(criterio: str):
     lista_datos = duplicado_csv() 
     if criterio == "nombre_az":
@@ -71,7 +76,7 @@ def ordenar_paises_por_nombre(criterio: str):
     else:
         return {"error": "criterio invalido"}
     lista_nombres = []
-    for pais in lista_datos:
+    for pais in lista_datos: #solo tomamos los nombres para mayor facilidad
         lista_nombres.append(pais["nombre"])
     nombres_ordenados = sorted(lista_nombres, reverse=not ascendente)
     lista_ordenada = []
@@ -81,42 +86,50 @@ def ordenar_paises_por_nombre(criterio: str):
                 lista_ordenada.append(pais)
     actualizar_csv(lista_ordenada)
     return lista_ordenada
-
+    
+#evalua que tipo de criterio se aplicar, luego va a los for anidados para recorrer
+#se valida los posibles numeros para poder pasarlos a int
+#para la parte del ordenamiento final no logre usar lambat asi que se improviso con esos condicionales
 def ordenar_paises_por_numero(criterio: str, clave: str):
     lista_datos = duplicado_csv()
-
-    # Verificar el criterio
-    if criterio == f"{clave}_menos":
+    partes = criterio.split("_")
+    if len(partes) != 2:
+        return {"error": "criterio invalido"}
+    clave_split, orden_split = partes
+    if clave_split != clave:
+        return {"error": "clave no coincide con criterio"}
+    if orden_split == "menos":
         ascendente = True
-    elif criterio == f"{clave}_mas":
+    elif orden_split == "mas":
         ascendente = False
     else:
-        return {"error": "criterio invalido"}
+        return {"error": "orden invalido"}
+
     for for_externo in range(len(lista_datos)):
         for for_interno in range(for_externo + 1, len(lista_datos)):
             a_str = str(lista_datos[for_externo][clave]).strip().replace(",", ".")
             b_str = str(lista_datos[for_interno][clave]).strip().replace(",", ".")
-
             # Si tienen punto, tomar solo la parte entera
             if "." in a_str:
                 a_str = a_str.split(".")[0]
             if "." in b_str:
                 b_str = b_str.split(".")[0]
 
-            # Validar que sean numéricos
             if not a_str.isdigit() or not b_str.isdigit():
                 continue
             a = int(a_str)
             b = int(b_str)
 
+            #se ordena ascendente (menor a mayor) y el valor actual es mayor al siguiente, intercambian
             if ascendente and a > b:
                 lista_datos[for_externo], lista_datos[for_interno] = lista_datos[for_interno], lista_datos[for_externo]
+            #se ordena descendente (mayor a menor) y el valor actual es menor al siguiente → intercambiarlos
             elif not ascendente and a < b:
                 lista_datos[for_externo], lista_datos[for_interno] = lista_datos[for_interno], lista_datos[for_externo]
     actualizar_csv(lista_datos)
     return lista_datos
 
-
+#gestor de ordenamientos
 def ordenar_paises(criterio: str):
     if criterio in ["nombre_az", "nombre_za"]:
         return ordenar_paises_por_nombre(criterio)
@@ -127,6 +140,10 @@ def ordenar_paises(criterio: str):
     else:
         return {"error": "criterio invalido"}
 
+#llama a la funcion que ordena paises por numero
+#se extrae en los extremos
+#se lo recorre por si hay algun pais extra que repita numero de poblacion, tanto de adelante como desde atras para adelante
+#luego para una mayor visualizacion, se les añade texto descriptivo al nombre
 def min_max_poblacion():
     datos_ordenados = ordenar_paises_por_numero("poblacion_mas","poblacion")
     min_dato = datos_ordenados[0]
@@ -154,25 +171,24 @@ def min_max_poblacion():
         pais["nombre"] = f"{pais['nombre']} (mayor gente)"
     return minimos_datos + maximos_datos
 
-
+#extrae la poblacion de los paises, calcula la cantidad de paises, suma la cantidad de poblaciones
+#luego se promedian y se redondea en 0
 def promedio_poblacion():
     datos = duplicado_csv()
     suma_poblacion = 0
     valores = []
     for pais in datos:
         valores.append(pais["poblacion"])
-    #obtenemos la cantidad de valores
     total_paises = len(valores)
-    #iteramos por la lista de valores y sumamos
     for valor in valores:
         #sumamos el valor a la suma total
         suma_poblacion += int(valor)
-    #ya con la suma total y la cantidad de valores, calculamos el promedio con la cifras decimales deseadas
     promedio = round(suma_poblacion / total_paises, 0)
     print(f" el promedio de la poblacion por pais, considerando que la poblacion total es {suma_poblacion} y la cantidad de paises es de {total_paises} es de: {promedio}")
     return {"promedio de poblacion por pais":int(promedio)}
 
 
+# muy similar a la de poblacion, solo adaptada a que puede recibir valores float
 def promedio_superficie():
     datos = duplicado_csv()
     suma_superficie = 0
@@ -183,12 +199,13 @@ def promedio_superficie():
 
     for valor in valores:
         suma_superficie += float(valor)
-
     promedio = round(suma_superficie / total_paises, 0)
-
     return {"promedio de superficie por pais": int(promedio)}
 
 
+#hace una lista de diccionarios de continentes, cuenta la cantidad de paises que estan en dicho continente
+#lo registra y procede al siguiente
+#si por lo que sea recibe lista vacia, pone 0 a cada continente. por lo que de por ese es el manejo de error aqui.
 def paises_por_continente():
     datos = duplicado_csv()
     continentes = ["África", "América", "Asia", "Europa", "Oceanía"]
