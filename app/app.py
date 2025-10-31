@@ -1,6 +1,6 @@
 from flask import Flask, render_template,request
 from creacion_csv import crear_csv,BASE_DIRECTORIO,CSV,PARAMETROS
-from auxiliares import duplicado_csv
+from auxiliares import duplicado_csv,paises_actuales
 from generador_html import generar_html_salidas
 from consignas import buscar_pais,filtrar_continentes,filtrar_rango,ordenar_paises,min_max_poblacion,promedio_poblacion,promedio_superficie,paises_por_continente
 import csv
@@ -16,8 +16,9 @@ crear_csv()
 @app.route('/')
 def home():
     paises = duplicado_csv()
+    contador_paises = paises_actuales(paises)
     html_salida = generar_html_salidas(paises)
-    return render_template('index.html',html_salida=html_salida)
+    return render_template('index.html',html_salida=html_salida, cantidad_paises = contador_paises)
 
 @app.route('/buscar')
 def buscar():
@@ -30,17 +31,21 @@ def buscar():
 def filtrar_continente():
     continente = request.args.get('continente', '')
     resultado = filtrar_continentes(continente)
+    contador_paises = paises_actuales(resultado)
     html_salida = generar_html_salidas(resultado)
-    return render_template('index.html', html_salida=html_salida)
+    return render_template('index.html', html_salida=html_salida, cantidad_paises=contador_paises)
 
 
 @app.route('/filtrar_poblacion')
 def filtrar_poblacion_ruta():
     minimo = int(request.args.get('min', 0))
     maximo = int(request.args.get('max', 0))
+    if minimo < 0 or maximo < 0:
+        return {"error":"no puede haber numeros negativos"}
     resultado = filtrar_rango(minimo, maximo, "poblacion")
+    contador_paises = paises_actuales(resultado)
     html_salida = generar_html_salidas(resultado)
-    return render_template('index.html', html_salida=html_salida)
+    return render_template('index.html', html_salida=html_salida, cantidad_paises=contador_paises)
 
 
 @app.route('/filtrar_superficie')
@@ -48,15 +53,17 @@ def filtrar_superficie_ruta():
     minimo = int(request.args.get('min', 0))
     maximo = int(request.args.get('max', 0))
     resultado = filtrar_rango(minimo, maximo, "superficie")
+    contador_paises = paises_actuales(resultado)
     html_salida = generar_html_salidas(resultado)
-    return render_template('index.html', html_salida=html_salida)
+    return render_template('index.html', html_salida=html_salida, cantidad_paises=contador_paises)
 
 @app.route('/ordenar')
 def ordenar():
     criterio = request.args.get('criterio', '')
-    resultado = ordenar_paises(criterio) 
+    resultado = ordenar_paises(criterio)
+    contador_paises = paises_actuales(resultado) 
     html_salida = generar_html_salidas(resultado)
-    return render_template('index.html', html_salida=html_salida)
+    return render_template('index.html', html_salida=html_salida, cantidad_paises=contador_paises)
 
 @app.route("/borrar")
 def borrar():
@@ -64,8 +71,9 @@ def borrar():
         os.remove(CSV)
     crear_csv()
     paises = duplicado_csv()
+    contador_paises = paises_actuales(paises)
     html_salida = generar_html_salidas(paises)
-    return render_template('index.html',html_salida=html_salida)
+    return render_template('index.html',html_salida=html_salida,cantidad_paises=contador_paises)
 
 @app.route("/estadisticas")
 def estadisticas():
@@ -77,24 +85,28 @@ def estadisticas():
 
     if tipo == "maxmin_poblacion":
         resultado = min_max_poblacion()
+        contador_paises = paises_actuales(resultado)
         html_salida = generar_html_salidas(resultado)
-        return render_template("index.html", html_salida=html_salida)
+        return render_template("index.html", html_salida=html_salida, cantidad_paises=contador_paises)
 
     elif tipo == "prom_poblacion":
         resultado = promedio_poblacion()
+        contador_paises = paises_actuales(resultado)
         html_salida = generar_html_salidas(resultado)
-        return render_template("index.html", html_salida=html_salida)
+        return render_template("index.html", html_salida=html_salida, cantidad_paises=contador_paises)
 
     elif tipo == "prom_superficie":
         resultado = promedio_superficie()
+        contador_paises = paises_actuales(resultado)
         html_salida = generar_html_salidas(resultado)
-        return render_template("index.html", html_salida=html_salida)
+        return render_template("index.html", html_salida=html_salida, cantidad_paises=contador_paises)
 
 
     elif tipo == "paises_continente":
         resultado = paises_por_continente()
+        contador_paises = paises_actuales(resultado)
         html_salida = generar_html_salidas(resultado)
-        return render_template("index.html", html_salida=html_salida)
+        return render_template("index.html", html_salida=html_salida, cantidad_paises=contador_paises)
 
     html_salida = generar_html_salidas({"error": f"Tipo desconocido: {tipo}"})
     return render_template("index.html", html_salida=html_salida)

@@ -12,6 +12,7 @@
     <header class="header">
         <h1>TPI: Explorador de Países</h1>
         <h2>integrantes: Aucache - Gatica</h2>
+        <span>Paises actuales en el registro: {{ cantidad_paises }}</span>
     </header>
 
     <main class="contenedor">
@@ -61,8 +62,8 @@
             <section class="bloque">
                 <h3>Filtrar por población</h3>
                 <form action="/filtrar_poblacion" method="get" class="input-rango">
-                    <input type="number" name="min" placeholder="mínima" required>
-                    <input type="number" name="max" placeholder="máxima" required>
+                    <input type="number"  name="min" placeholder="mínima" min="0" required>
+                    <input type="number" name="max" placeholder="máxima"  min="0" required>
                     <button type="submit">Filtrar</button>
                 </form>
                 <p class="ayuda">Ingrese valores numéricos (habitantes)</p>
@@ -72,8 +73,8 @@
             <section class="bloque">
                 <h3>Filtrar por superficie</h3>
                 <form action="/filtrar_superficie" method="get" class="input-rango">
-                    <input type="number" name="min" placeholder="mínima" required>
-                    <input type="number" name="max" placeholder="máxima" required>
+                    <input type="number" name="min" placeholder="mínima" min="0" required>
+                    <input type="number" name="max" placeholder="máxima" min="0" required>
                     <button type="submit">Filtrar</button>
                 </form>
                 <p class="ayuda">Ingrese valores numéricos (km²)</p>

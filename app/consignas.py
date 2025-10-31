@@ -31,8 +31,9 @@ def filtrar_continentes(continente:str):
         if pais["continente"] == continente:
             lista_filtrada.append(pais)
     if lista_filtrada == []:
-        return {"error":"continente inexistente"}
+        return {"error":"continente inexistente o fuera del resgistro actual"}
     else:
+        actualizar_csv(lista_filtrada)
         return lista_filtrada
 
 
@@ -56,6 +57,7 @@ def filtrar_rango(minimo: int, maximo: int, tipo: str):
             lista_filtrada.append(pais)
     if not lista_filtrada:
         return {"error": f"No hay países con {tipo} entre {minimo} y {maximo}"}
+    actualizar_csv(lista_filtrada)
     return lista_filtrada
 
 
@@ -146,6 +148,10 @@ def min_max_poblacion():
             maximos_datos.append(dato_actual)
         else:
             break
+    for pais in minimos_datos:
+        pais["nombre"] = f"{pais['nombre']} (menor gente)"
+    for pais in maximos_datos:
+        pais["nombre"] = f"{pais['nombre']} (mayor gente)"
     return minimos_datos + maximos_datos
 
 

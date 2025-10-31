@@ -4,16 +4,16 @@ FROM python:3.11-slim
 # Carpeta de trabajo
 WORKDIR /app
 
-# Copiar requerimientos y instalar
+# Copiar requerimientos y instalarlos
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar la app
+# Copiar el contenido
 COPY app/ .
 COPY static/ ./static
 
-# Exponer el puerto
+# Puerto de salida
 EXPOSE 5000
 
-# Comando para correr la app
+# Comando para inicial la app
 CMD ["python", "app.py"]

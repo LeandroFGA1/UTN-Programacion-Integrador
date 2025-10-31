@@ -19,3 +19,15 @@ def actualizar_csv(lista:list):
         escritor = csv.DictWriter(archivo,fieldnames=PARAMETROS)
         escritor.writeheader()
         escritor.writerows(lista)
+
+
+def paises_actuales(lista: list):
+    nombres_vistos = set()
+    contador_repetidos = 0
+    for pais in lista:
+        nombre = pais["nombre"].strip().lower()
+        if nombre in nombres_vistos:
+            contador_repetidos += 1
+        else:
+            nombres_vistos.add(nombre)
+    return len(lista) - contador_repetidos
