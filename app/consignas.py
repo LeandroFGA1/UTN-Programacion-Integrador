@@ -39,16 +39,25 @@ def filtrar_continentes(continente:str):
 def filtrar_rango(minimo: int, maximo: int, tipo: str):
     if minimo >= maximo:
         return {"error": "entrada invalida, el mínimo debe ser menor al máximo"}
+
     lista = duplicado_csv()
     lista_filtrada = []
+
     for pais in lista:
-        valor = int(pais[tipo])
+        valor_str = str(pais[tipo]).strip().replace(",", ".") 
+        if valor_str == "":
+            continue
+        if "." in valor_str:
+            valor_str = valor_str.split(".")[0]
+        if not valor_str.isdigit():
+            continue
+        valor = int(valor_str)
         if minimo <= valor <= maximo:
             lista_filtrada.append(pais)
-    if lista_filtrada == []:
+    if not lista_filtrada:
         return {"error": f"No hay países con {tipo} entre {minimo} y {maximo}"}
-
     return lista_filtrada
+
 
 
 def ordenar_paises_por_nombre(criterio: str):
