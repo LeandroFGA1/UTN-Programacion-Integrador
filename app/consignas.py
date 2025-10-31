@@ -184,7 +184,6 @@ def promedio_poblacion():
         #sumamos el valor a la suma total
         suma_poblacion += int(valor)
     promedio = round(suma_poblacion / total_paises, 0)
-    print(f" el promedio de la poblacion por pais, considerando que la poblacion total es {suma_poblacion} y la cantidad de paises es de {total_paises} es de: {promedio}")
     return {"promedio de poblacion por pais":int(promedio)}
 
 
