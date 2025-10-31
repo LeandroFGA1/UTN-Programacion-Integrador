@@ -93,7 +93,30 @@ http://127.0.0.1:5000
   - Promedio de población mundial  
   - Promedio de superficie mundial  
   - Cantidad de países por continente  
-- Restaurar tabla original (limpiar filtros y ordenamientos)
+- **limpar** Restaurar tabla original (limpiar filtros y ordenamientos)
+
+---
+## 📝 Comentarios y consideraciones del proyecto
+
+- **Manejo del CSV y filtros:**  
+  Inicialmente, la aplicación generaba una **copia del CSV** y manipulaba esa lista cada vez que se activaba un botón.  
+  Esto provocaba que, por ejemplo, al filtrar por continente y luego por población, los resultados del segundo filtro se aplicaran sobre **todos los países originales**, sin considerar el filtro anterior.  
+  Para mantener una **secuencia lógica de acciones**, se decidió **reconstruir el CSV después de cada operación**.  
+  De esta forma, cada acción tiene sentido independiente y el botón de "Limpiar" puede restaurar el CSV original correctamente, ya sea recargando desde el archivo o usando una copia de seguridad interna.
+
+- **Tratamiento de la Antártida:**  
+  Aunque existen territorios reclamados en la Antártida, **no se consideran países soberanos**, y por tratados internacionales el continente es administrado de manera compartida por varios países (entre ellos Argentina y Chile).  
+  Por esta razón, la Antártida **no fue incluida en el CSV** como país o continente activo.
+
+- **Campo "independencia":**  
+  En el CSV se incluyó un campo llamado `"independencia"`, con la intención de **diferenciar países independientes de territorios no independientes**.  
+  Sin embargo, **no se implementó su funcionalidad** en la aplicación debido a limitaciones de tiempo.
+---
+
+
+
+
+
 
 ---
 
