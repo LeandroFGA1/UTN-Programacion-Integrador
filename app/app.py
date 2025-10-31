@@ -7,7 +7,7 @@ import csv
 import os
 app = Flask(
     __name__,
-    static_folder="../static",  # ruta relativa a app.py
+    static_folder="static",
     template_folder="templates"
 )
 

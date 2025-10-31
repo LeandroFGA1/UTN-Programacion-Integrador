@@ -10,6 +10,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 # Copiar la app
 COPY app/ .
+COPY static/ ./static
 
 # Exponer el puerto
 EXPOSE 5000
