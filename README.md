@@ -109,6 +109,15 @@ http://127.0.0.1:5000
 
 ---
 
+
+## 👥 Participación de los integrantes
+
+| Integrante         | Responsabilidades principales |
+|-------------------|-------------------------------|
+| Rodrigo Gatica     | Desarrollo del **HTML y CSS**, diseño del **aspecto visual** de la aplicación y la interfaz de usuario. |
+| Leandro Aucache    | Configuración de **Docker**, implementación de **backend**, **filtros**, **ordenamientos**, **buscador**, **estadísticas**, pruebas y elaboración del **informe final**. Edicion de video. |
+
+
 Proyecto académico para **UTN - Universidad Tecnológica Nacional**  
 
 ✅ *Listo para ejecutarse en cualquier entorno con Docker y Python 3.11.*
