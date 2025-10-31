@@ -94,6 +94,31 @@ http://127.0.0.1:5000
   - Promedio de superficie mundial  
   - Cantidad de países por continente  
 - **limpar** Restaurar tabla original (limpiar filtros y ordenamientos)
+---
+
+## 📊 Ejemplos de entrada, salida y flujo de filtros
+
+A continuación se presentan ejemplos del comportamiento de la aplicación y cómo se aplican los filtros y ordenamientos de manera secuencial:
+
+1. **Búsqueda de países por nombre**  
+   - Entrada parcial: `"arge"` → Resultado: **Argelia** y **Argentina**  
+   - Entrada exacta: `"Argentina"` → Resultado: **Argentina**  
+   Esto permite realizar búsquedas flexibles, que coincidan con parte del nombre o con el nombre completo del país.
+
+2. **Flujo de filtros secuenciales**  
+   - Se aplica el filtro por **continente**: `"África"` → Se muestran 59 países  
+   - Luego se filtra por **población** en el rango `4.000` a `400.000` → Resultado: 4 países  
+   - Posteriormente se filtra por **superficie** entre `0` y `500 km²` → Resultado: 3 países  
+   - Finalmente, se aplica el **ordenamiento por mayor/menor población** → Resultado: 2 países  
+
+3. **Limitaciones del flujo de filtros**  
+   - Después de varias operaciones secuenciales, para aplicar nuevos filtros o realizar búsquedas diferentes, es necesario **utilizar el botón “Limpiar”**.  
+   - Esto restaura el CSV original y permite iniciar un nuevo flujo de filtrado u ordenamiento.
+
+> 🔹 Esta secuencia demuestra cómo la aplicación mantiene la coherencia de los datos y asegura que cada acción tenga un efecto predecible sobre la tabla de países.
+
+
+
 
 ---
 ## 📝 Comentarios y consideraciones del proyecto
