@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explorador de Países</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+
+</head>
+<body>
+    <header class="header">
+        <h1>Explorador de Países</h1>
+        <h2>Aplicación Flask en Docker</h2>
+    </header>
+
+    <main class="contenedor">
+        <!-- ZONA DE SALIDAS -->
+        <section class="salidas">
+            <h3>Zona de Salidas</h3>
+            {% if html_salida %}
+                {{ html_salida | safe }}
+            {% else %}
+                <p>Aquí se mostrarán los resultados...</p>
+            {% endif %}
+        </section>
+
+
+
+        <!-- BOTONERA -->
+        <aside class="botonera">
+
+            <!-- Buscar País -->
+            <section class="bloque">
+                <h3>Buscar país</h3>
+                <form action="/buscar" method="get" class="input-group">
+                    <input type="text" name="pais" placeholder="Ingrese nombre del país" required>
+                    <button type="submit">Buscar</button>
+                </form>
+            </section>
+
+            <!-- Filtrar por continente -->
+            <section class="bloque">
+                <h3>Filtrar por continente</h3>
+                <form action="/filtrar_continente" method="get" class="input-group">
+                    <label for="continente">Continente:</label>
+                    <select id="continente" name="continente" required>
+                        <option value="">Seleccione continente</option>
+                        <option value="América">América</option>
+                        <option value="Europa">Europa</option>
+                        <option value="Asia">Asia</option>
+                        <option value="África">África</option>
+                        <option value="Oceanía">Oceanía</option>
+                    </select>
+                    <button type="submit">Filtrar</button>
+                </form>
+            </section>
+
+
+            <!-- Filtrar por población -->
+            <section class="bloque">
+                <h3>Filtrar por población</h3>
+                <form action="/filtrar_poblacion" method="get" class="input-rango">
+                    <input type="number" name="min" placeholder="mínima" required>
+                    <input type="number" name="max" placeholder="máxima" required>
+                    <button type="submit">Filtrar</button>
+                </form>
+                <p class="ayuda">Ingrese valores numéricos (habitantes)</p>
+            </section>
+
+            <!-- Filtrar por superficie -->
+            <section class="bloque">
+                <h3>Filtrar por superficie</h3>
+                <form action="/filtrar_superficie" method="get" class="input-rango">
+                    <input type="number" name="min" placeholder="mínima" required>
+                    <input type="number" name="max" placeholder="máxima" required>
+                    <button type="submit">Filtrar</button>
+                </form>
+                <p class="ayuda">Ingrese valores numéricos (km²)</p>
+            </section>
+
+            <!-- Ordenar países -->
+            <section class="bloque">
+                <h3>Ordenar países</h3>
+                <form action="/ordenar" method="get" class="input-group">
+                    <label for="criterio">Criterio:</label>
+                    <select id="criterio" name="criterio" required>
+                        <option value="">Seleccione criterio</option>
+                        <option value="nombre_az">Nombre A-Z</option>
+                        <option value="nombre_za">Nombre Z-A</option>
+                        <option value="poblacion_mas">Población de mayor-menor</option>
+                        <option value="poblacion_menos">Población de menor-mayor</option>
+                        <option value="superficie_mas">Superficie mayor-menor</option>
+                        <option value="superficie_menos">Superficie menor-mayor</option>
+                    </select>
+                    <button type="submit">Ordenar</button>
+                </form>
+            </section>
+
+
+            <!-- Mostrar estadísticas -->
+            <section class="bloque">
+                <h3>Mostrar estadísticas</h3>
+                <div class="botones-grid">
+                    <form action="/estadisticas" method="get"><input type="hidden" name="tipo" value="maxmin_poblacion"><button type="submit">Mayor/Menor población</button></form>
+                    <form action="/estadisticas" method="get"><input type="hidden" name="tipo" value="prom_poblacion"><button type="submit">Población promedio</button></form>
+                    <form action="/estadisticas" method="get"><input type="hidden" name="tipo" value="prom_superficie"><button type="submit">Superficie promedio</button></form>
+                    <form action="/estadisticas" method="get"><input type="hidden" name="tipo" value="paises_continente"><button type="submit">Países por continente</button></form>
+                </div>
+            </section>
+
+            <!-- Limpiar -->
+            <section class="bloque centrado">
+                <form action="/borrar" method="get">
+                    <button type="submit" class="boton-limpiar">Limpiar</button>
+                </form>
+            </section>
+
+        </aside>
+    </main>
+</body>
+</html>

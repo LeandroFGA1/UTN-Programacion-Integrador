@@ -1,0 +1,204 @@
+/* GENERAL */
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+header {
+    text-align: center;
+    background-color: #1a73e8;
+    color: white;
+    padding: 1rem 0;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+main.contenedor {
+    display: flex;
+    flex: 1 1 auto;
+    height: calc(100vh - 80px);
+}
+
+/* ZONA DE SALIDAS */
+.salidas {
+    flex: 3;
+    background-color: #fff8b0;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+.salidas pre {
+    white-space: pre-wrap;
+}
+
+/* BOTONERA */
+
+.botones-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+    
+}
+.botonera{
+    background-color: #fff;
+    overflow-x: hidden;
+    height: 80vh;
+}
+
+
+/* BLOQUES */
+.bloque {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 0.8rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.bloque h3 {
+    margin-top: 0;
+    font-size: 1rem;
+    color: #333;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.4rem;
+    margin-bottom: 0.6rem;
+}
+
+/* INPUTS Y BOTONES */
+.input-group,
+.input-rango {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.input-rango input[type="number"],
+.input-group input[type="text"],
+select {
+    flex: 1;
+    padding: 0.4rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+.input-rango input[type="number"] {
+    width: 45px;
+}
+
+
+button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 0.4rem 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s;
+    font-size: 0.9rem;
+}
+
+button:hover {
+    background-color: #155ab6;
+}
+
+/* GRILLAS DE BOTONES */
+.botones-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 0.5rem;
+}
+
+/* TEXTO AYUDA */
+.ayuda {
+    font-size: 0.8rem;
+    color: #666;
+    margin-top: 0.4rem;
+}
+
+/* BOTÓN LIMPIAR */
+.centrado {
+    text-align: center;
+}
+
+.boton-limpiar {
+    background-color: #e53935;
+}
+
+.boton-limpiar:hover {
+    background-color: #c62828;
+}
+
+/* SCROLL Y LAYOUT */
+.salidas,
+.botonera {
+    overflow-y: auto;
+}
+
+/* TABLA SALIDAS */
+.tabla-salidas {
+    width: 95%; /* ocupa casi todo el ancho del contenedor */
+    margin: 0 auto 5rem auto; /* centrada */
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    background-color: #fffef0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.tabla-salidas thead {
+    background-color: #f9d976;
+}
+
+.tabla-salidas th, .tabla-salidas td {
+    border: 1px solid #f0e5b8;
+    padding: 0.5rem 0.7rem;
+    text-align: left;
+}
+
+.tabla-salidas tbody tr:hover {
+    background-color: #fff3b0;
+}
+
+.tabla-salidas th {
+    font-weight: bold;
+    color: #333;
+}
+
+.mensaje {
+    text-align: center;
+    background-color: #f1f3f4;
+    padding: 1.5rem;
+    border-radius: 10px;
+    margin: 2rem auto;
+    width: 80%;
+    max-width: 600px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 1.2rem;
+}
+
+.mensaje h2 {
+    color: #1a73e8;
+    margin-bottom: 0.5rem;
+}
+
+.mensaje.error {
+    background-color: #ffeaea;
+    border: 1px solid #d93025;
+    color: #b00020;
+}
+

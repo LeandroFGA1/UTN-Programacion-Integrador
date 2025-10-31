@@ -1,0 +1,246 @@
+nombre,poblacion,superficie,continente,independencia
+Ciudad Del Vaticano,882,0.44,Europa,True
+Corea Del Sur,51159889,100210,Asia,True
+Egipto,107271260,1002450,África,True
+Montserrat,4386,102,América,False
+Islandia,391810,103000,Europa,True
+Mauritania,4927532,1030700,África,True
+Líbano,5490000,10452,Asia,True
+Gambia,2422712,10689,África,True
+Guatemala,18079810,108889,América,True
+Kosovo,1585566,10908,Europa,True
+Bolivia,11365333,1098581,América,True
+Cuba,9748007,109884,América,True
+Jamaica,2825544,10991,América,True
+Hong Kong,7527500,1104,Asia,False
+Etiopía,111652998,1104300,África,True
+Bulgaria,6437360,110879,Europa,True
+Liberia,5248621,111369,África,True
+Honduras,9892632,112492,América,True
+Benín,13224860,112622,África,True
+Martinica,349925,1128,América,False
+Colombia,53057212,1141748,América,True
+Catar,3173024,11586,Asia,True
+Jersey,103267,116,Europa,False
+Eritrea,3607000,117600,África,True
+Malawi,20734262,118484,África,True
+Islas Tokelau,2608,12,Oceanía,False
+Corea Del Norte,25950000,120538,Asia,True
+Islas Malvinas,3662,12173,América,False
+Vanuatu,321409,12189,Oceanía,True
+Sudáfrica,63100945,1221037,África,True
+Mali,22395489,1240192,África,True
+Angola,36170961,1246700,África,True
+Níger,26312034,1267000,África,True
+Chad,19340757,1284000,África,True
+Perú,34350244,1285216,América,True
+Nicaragua,6803886,130373,América,True
+Grecia,10400720,131990,Europa,True
+Isla De Navidad,1692,135,Oceanía,False
+Montenegro,623327,13812,Europa,True
+Islas Faroe,54885,1393,Europa,False
+Bahamas,398165,13943,América,True
+Islas Cocos O Islas Keeling,593,14,Oceanía,False
+Wallis Y Futuna,11620,142,Oceanía,False
+Tayikistán,10499000,143100,Asia,True
+Nepal,29911840,147181,Asia,True
+Bangladesh,169828911,147570,Asia,True
+Timor Oriental,1391221,14874,Asia,True
+Islas Vírgenes Del Reino Unido,39471,151,América,False
+Mongolia,3544835,1564110,Asia,True
+Alandia,30654,1580,Europa,False
+Liechtenstein,40900,160,Europa,True
+Guadalupe,378561,1628,América,False
+Túnez,11972169,163610,África,True
+Surinam,616500,163820,América,True
+Iran,85961000,1648195,Asia,True
+Rusia,146028325,17098242,Europa,True
+Suazilandia,1235549,17364,África,True
+Libia,7459000,1759540,África,True
+Kuwait,4881254,17818,Asia,True
+Aruba,107566,180,América,False
+Islas Marshall,42418,181,Oceanía,True
+Uruguay,3499451,181034,América,True
+Camboya,17577760,181035,Asia,True
+Fiyi,900869,18272,Oceanía,True
+Siria,25620000,185180,Asia,True
+Nueva Caledonia,264596,18575,Oceanía,False
+Comoras,919901,1862,África,True
+Sudán,51662000,1886068,África,True
+Indonesia,284438782,1904569,Asia,True
+México,130575786,1964375,América,True
+Senegal,18593258,196722,África,True
+Samoa Americana,49710,199,Oceanía,False
+Kirguizistán,7281800,199951,Asia,True
+Mónaco,38423,2.02,Europa,True
+Eslovenia,2130638,20273,Europa,True
+Mauricio,1243741,2040,África,True
+Bielorrusia,9109280,207600,Europa,True
+Israel,10134800,20770,Asia,True
+San Bartolomé,10562,21,América,False
+Nauru,11680,21,Oceanía,True
+El Salvador,6029976,21041,América,True
+Guyana,772975,214969,América,True
+Arabia Saudí,35300280,2149690,Asia,True
+Groenlandia,56542,2166086,América,False
+Belice,417634,22966,América,True
+Djibouti,1066809,23200,África,True
+Congo (Rep. Dem.),112832000,2344858,África,True
+Islas Cook,15040,236,Oceanía,False
+Laos,7647000,236800,Asia,True
+Argelia,47400000,2381741,África,True
+Rumania,19036031,238391,Europa,True
+Ghana,33742380,238533,África,True
+Uganda,45905417,241550,África,True
+San Pedro Y Miquelón,5819,242,América,False
+Reino Unido,69281437,242900,Europa,True
+Guinea,14363931,245857,África,True
+Reunión,896175,2511,África,False
+Macedonia Del Norte,1822612,25713,Europa,True
+Luxemburgo,681973,2586,Europa,True
+Tuvalu,10643,26,Oceanía,True
+Niue,1681,260,Oceanía,False
+San Cristóbal Y Nieves,51320,261,América,True
+Ruanda,14104969,26338,África,True
+Islas Caimán,84738,264,América,False
+Sahara Occidental,600904,266000,África,False
+Gabón,2469296,267668,África,True
+Nueva Zelanda,5324700,270467,Oceanía,True
+Kazajistán,20426568,2724900,Asia,True
+Burkina Faso,24070553,272967,África,True
+Ecuador,18103660,276841,América,True
+Haití,11867032,27750,América,True
+Argentina,46735004,2780400,América,True
+Burundi,12332788,27834,África,True
+Guinea Ecuatorial,1668768,28051,África,True
+Samoa,205557,2842,Oceanía,True
+Albania,2363314,28748,Europa,True
+Islas Salomón,750325,28896,Oceanía,True
+Armenia,3076200,29743,Asia,True
+Macao,685900,30,Asia,False
+Maldivas,515132,300,Asia,True
+Italia,58927633,301336,Europa,True
+Lesotho,2116427,30355,África,True
+Bélgica,11825551,30528,Europa,True
+Omán,5343630,309500,Asia,True
+Polonia,37392000,312679,Europa,True
+Malta,574250,316,Europa,True
+Costa De Marfil,31719275,322463,África,True
+Noruega,5606944,323802,Europa,True
+Caribe Neerlandés,31980,328,América,False
+India,1417492000,3287590,Asia,True
+Malasia,34231700,330803,Asia,True
+Vietnam,101343800,331212,Asia,True
+Finlandia,5650325,338424,Europa,True
+Moldavia,2749076,33846,Europa,True
+Sint Maarten,41349,34,América,False
+Islas Ultramarinas Menores De Estados Unidos,0,34.2,América,False
+Congo,6142180,342000,África,True
+Filipinas,114123600,342353,Asia,True
+Grenada,109021,344,América,True
+Islas Vírgenes De Los Estados Unidos,87146,347,América,False
+Alemania,83491249,357114,Europa,True
+Isla De Norfolk,2188,36,Oceanía,False
+Guinea-Bisáu,1781308,36125,África,True
+Taiwán,23317031,36193,Asia,False
+Mayotte,320901,374,África,False
+Japón,123210000,377930,Asia,True
+Bután,784043,38394,Asia,True
+San Vicente Y Granadinas,110872,389,América,True
+Zimbabue,17073087,390757,África,True
+Santa Elena- Ascensión Y Tristán De Acuña,5651,394,África,False
+Cabo Verde,491233,4033,África,True
+Paraguay,6109644,406752,América,True
+Suiza,9082848,41284,Europa,True
+Polinesia Francesa,279500,4167,Oceanía,False
+Países Bajos,18100436,41850,Europa,True
+Barbados,267800,430,América,True
+Dinamarca,6011488,43094,Europa,True
+Irak,46118793,438317,Asia,True
+Antigua Y Barbuda,103603,442,América,True
+Curazao,156115,444,América,False
+Marruecos,36828330,446550,África,True
+Uzbekistán,37859698,447400,Asia,True
+Suecia,10605098,450295,Europa,True
+Seychelles,122729,452,África,True
+Estonia,1369995,45227,Europa,True
+Palau,16733,459,Oceanía,True
+Papúa Nueva Guinea,11781559,462840,Oceanía,True
+Islas Marianas Del Norte,47329,464,Oceanía,False
+Andorra,88406,468,Europa,True
+Islas Pitcairn,35,47,Oceanía,False
+Camerún,29442327,475442,África,True
+República Dominicana,10771504,48671,América,True
+Turkmenistán,7057841,488100,Asia,True
+República Eslovaca,5413813,49037,Europa,True
+España,49315949,505992,Europa,True
+Costa Rica,5309625,51100,América,True
+Bosnia Y Herzegovina,3422000,51209,Europa,True
+Trinidad Y Tobago,1367764,5130,América,True
+Tailandia,65859640,513120,Asia,True
+Yemen,32684503,527968,Asia,True
+Saint Martin,31496,53,América,False
+Bermudas,64055,54,América,False
+Guam,153836,549,Oceanía,False
+Francia,68706000,551695,Europa,True
+Croacia,3866233,56594,Europa,True
+Togo,8095498,56785,África,True
+Isla De Man,84530,572,Europa,False
+Brunei,455500,5765,Asia,True
+Kenia,53330978,580367,África,True
+Botswana,2359609,582000,África,True
+Madagascar,31727042,587041,África,True
+Gibraltar,38000,6,Europa,False
+Territorio Británico Del Océano Índico,0,60,África,False
+Ucrania,32862000,603500,Europa,True
+San Marino,34132,61,Europa,True
+Islas Svalbard Y Jan Mayen,2530,61399,Europa,False
+Santa Lucía,184100,616,América,True
+Sudán Del Sur,15786898,619745,África,True
+Palestina,5483450,6220,Asia,False
+República Centroafricana,6470307,622984,África,True
+Somalia,19655000,637657,África,True
+Letonia,1829000,64559,Europa,True
+Afganistán,43844000,652230,Asia,True
+Lituania,2894886,65300,Europa,True
+Sri Lanka,21763170,65610,Asia,True
+Myanmar,51316756,676578,Asia,True
+Georgia,4000921,69700,Asia,True
+Micronesia,105564,702,Oceanía,True
+Irlanda,5458600,70273,Europa,True
+Singapur,6110200,710,Asia,True
+Sierra Leone,9077691,71740,África,True
+Tonga,100179,747,Oceanía,True
+Dominica,67408,751,América,True
+Zambia,19693423,752612,África,True
+Panamá,4064780,75417,América,True
+Chile,20206953,756102,América,True
+Bahrein,1594654,765,Asia,True
+Australia,27536874,7692024,Oceanía,True
+Guernsey,64781,78,Europa,False
+Turquía,85664944,783562,Asia,True
+Chequia,10882341,78865,Europa,True
+Mozambique,34090466,801590,África,True
+Kiribati,120740,811,Oceanía,True
+Namibia,3022401,825615,África,True
+Guayana Francesa,292354,83534,América,False
+Emiratos Árabes Unidos,11294243,83600,Asia,True
+Austria,9200931,83871,Europa,True
+Brasil,213421037,8515767,América,True
+Azerbaiyán,10241722,86600,Asia,True
+Pakistán,241499431,881912,Asia,True
+Serbia,6567783,88361,Europa,True
+Puerto Rico,3203295,8870,América,False
+Jordania,11734000,89342,Asia,True
+Anguilla,16010,91,América,False
+Venezuela,28517000,916445,América,True
+Portugal,10749635,92090,Europa,True
+Nigeria,223800000,923768,África,True
+Chipre,1442614,9251,Europa,True
+Hungría,9539502,93028,Europa,True
+Estados Unidos,340110988,9372610,América,True
+Tanzania,68153004,945087,África,True
+Islas Turks Y Caicos,50828,948,América,False
+Santo Tomé Y Príncipe,209607,964,África,True
+China,1408280000,9706961,Asia,True
+Canadá,41651653,9984670,América,True
